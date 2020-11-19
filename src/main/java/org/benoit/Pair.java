@@ -1,5 +1,7 @@
 package org.benoit;
 
+import java.util.Objects;
+
 // Abstracted 'Indexed' and added type safety
 // slight disadvantage: we are using 'Integer' instead of 'int' so this solution uses
 // more memory (1.3 available in 2000 while 1.6 in 2006, so more memory available ;-)
@@ -20,8 +22,23 @@ public final class Pair<T1,T2> {
     T2 getV2() {
         return this.v2;
     }
+
     @Override
     public String toString() {
         return "[" + v1 + "," + v2 + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Pair<?,?> pair = (Pair<?,?>) obj;
+        return Objects.equals(v1, pair.v1) &&
+                Objects.equals(v2, pair.v2);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(v1, v2);
     }
 }
