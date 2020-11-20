@@ -1,5 +1,9 @@
 package org.benoit;
 
+/**
+ * As the class is a singleton, no need to implement equals/hashcode
+ * @param <T>
+ */
 public class Leaf<T> extends Tree<T> {
     private Leaf() {}
 

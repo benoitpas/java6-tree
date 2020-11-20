@@ -1,8 +1,8 @@
 package org.benoit;
 
-import java.util.Objects;
+import java.util.Arrays;
 
-// Abstracted 'Indexed' and added type safety
+// Abstracted 'Indexed' interface and added type safety
 // slight disadvantage: we are using 'Integer' instead of 'int' so this solution uses
 // more memory (1.3 available in 2000 while 1.6 in 2006, so more memory available ;-)
 // https://en.wikipedia.org/wiki/Java_version_history )
@@ -33,12 +33,13 @@ public final class Pair<T1,T2> {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Pair<?,?> pair = (Pair<?,?>) obj;
-        return Objects.equals(v1, pair.v1) &&
-                Objects.equals(v2, pair.v2);
+        return Helper.equals(v1, pair.v1) && Helper.equals(v2, pair.v2);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(v1, v2);
+        // Arrays.hashcode() added in 1.5
+        // https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Arrays.html#hashCode(boolean%5B%5D)
+        return Arrays.hashCode(new Object[]{v1, v2});
     }
 }

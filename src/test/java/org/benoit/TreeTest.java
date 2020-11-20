@@ -4,8 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-public class TreeTest
-{
+public class TreeTest {
     @Test
     public void addIdTest() {
         Node expected = new Node(new Pair(4, "a"),
