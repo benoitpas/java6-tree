@@ -1,7 +1,7 @@
 package org.benoit;
 
 /**
- * As the class is a singleton, no need to implement equals/hashcode
+ * As the class is a singleton, no need to implement equals/hashcode as only once instance exists.
  * @param <T>
  */
 public class Leaf<T> extends Tree<T> {
